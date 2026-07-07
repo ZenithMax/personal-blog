@@ -12,6 +12,5 @@
 
 1. 在 GitHub 创建公开仓库 `personal-blog`。
 2. 将本目录内容推送到仓库 `main` 分支。
-3. 在仓库 Settings -> Pages 中选择 GitHub Actions 作为发布来源。
-4. 推送后等待 Actions 中 `Deploy blog to GitHub Pages` 运行成功。
-
+3. 在仓库 Settings -> Pages 中选择 `gh-pages` 分支作为发布来源。
+4. 推送后等待 Actions 中 `Deploy blog to GitHub Pages` 运行成功，工作流会把站点文件同步到 `gh-pages` 分支。
