@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ZenithMax 的个人 Blog</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="./index.html">ZenithMax Blog</a>
+      <a href="./posts/first-post.html">第一篇文章</a>
+    </nav>
+    <section class="intro">
+      <p class="eyebrow">Open Source Software Development</p>
+      <h1>记录课程实践、开发过程和问题解决</h1>
+      <p>这个 Blog 用来保存开源软件开发课程中的学习记录。当前项目重点是完成 GitHub 仓库管理、GitHub Actions 自动部署和 GitHub Pages 发布流程。</p>
+    </section>
+  </header>
+
+  <main class="container">
+    <section class="post-list" aria-labelledby="latest-posts">
+      <h2 id="latest-posts">文章列表</h2>
+      <article class="post-card">
+        <p class="post-date">2026-07-07</p>
+        <h3><a href="./posts/first-post.html">第一次使用 GitHub Pages 发布个人 Blog</a></h3>
+        <p>记录本次实践中创建仓库、编写静态页面、配置 GitHub Actions 和发布 GitHub Pages 的过程。</p>
+      </article>
+    </section>
+
+    <section class="notes" aria-labelledby="project-notes">
+      <h2 id="project-notes">项目说明</h2>
+      <ul>
+        <li>Blog 内容和源文件保存在公开 GitHub 仓库中。</li>
+        <li>每次向 main 分支提交后，GitHub Actions 会自动部署网站。</li>
+        <li>网站通过 GitHub Pages 对外公开访问。</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built with GitHub Pages and GitHub Actions.</p>
+  </footer>
+</body>
+</html>
+
