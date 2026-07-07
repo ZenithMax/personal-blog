@@ -20,10 +20,31 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Deploy static site to gh-pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
-          publish_branch: gh-pages
-          exclude_assets: '.git,.github'
+      - name: Publish static site to gh-pages
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git clone --depth=1 --branch gh-pages "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" /tmp/personal-blog-pages
+          find /tmp/personal-blog-pages -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+
+          shopt -s dotglob
+          for item in * .*; do
+            case "$item" in
+              .|..|.git|.github)
+                continue
+                ;;
+            esac
+            cp -R "$item" /tmp/personal-blog-pages/
+          done
+
+          cd /tmp/personal-blog-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No site changes to deploy."
+          else
+            git commit -m "Deploy site from ${GITHUB_SHA}"
+            git push origin gh-pages
+          fi
